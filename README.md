@@ -2,6 +2,7 @@ lethexa-adt
 ----------------
 
 Provides abstract data types like sets,lists and trees.
+It provides a unified way to call the api.
 
 Installation
 ------------
