@@ -1,5 +1,5 @@
 var assert = require('assert');
-var adt = require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../') + 'index.js');
+var adt = require((process.env.APP_DIR_FOR_CODE_COVERAGE || '../lib/') + 'adt.js');
 
 
 describe('Stack', function () {
@@ -12,7 +12,7 @@ describe('Stack', function () {
       var item3 = new TestItem('N3');
       var item2 = new TestItem('N2');
       var item1 = new TestItem('N1');
-      var theStack = adt.makeStack();
+      var theStack = new adt.Stack();
       
       theStack.push(item1);
       theStack.push(item2);
