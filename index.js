@@ -14,3 +14,7 @@ module.exports.makeStack = function() {
   return new adt.Stack();
 };
 
+module.exports.makeMap = function() {
+  return new adt.Map();
+};
+
