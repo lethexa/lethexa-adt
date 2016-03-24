@@ -5,6 +5,7 @@
  * @module lethexa-adt
  */
 var adt = require('./lib/adt');
+var tree = require('./lib/tree')
 
 module.exports.makeSet = function() {
   return new adt.Set();
@@ -18,3 +19,6 @@ module.exports.makeMap = function() {
   return new adt.Map();
 };
 
+module.exports.makeTree = function() {
+  return new tree.Tree();
+};
