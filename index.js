@@ -24,3 +24,13 @@ module.exports.Node = tree.Node;
 module.exports.makeTree = function() {
   return new tree.Tree();
 };
+
+
+module.exports.Set = adt.Set;
+module.exports.Stack = adt.Stack;
+module.exports.Map = adt.Map;
+module.exports.Node = tree.Node;
+module.exports.Tree = tree.Tree;
+
+
+
