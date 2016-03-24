@@ -19,6 +19,8 @@ module.exports.makeMap = function() {
   return new adt.Map();
 };
 
+module.exports.Node = tree.Node;
+
 module.exports.makeTree = function() {
   return new tree.Tree();
 };
