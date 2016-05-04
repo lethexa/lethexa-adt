@@ -24,6 +24,22 @@ describe('Stack', function () {
     });
   });
 
+  describe('when an entry is added to a stack', function () {
+    it('the value is in the parameters of the event ', function () {
+      var item1 = new TestItem('N1');
+      var theMap = new adt.Stack();
+      var addedElement = undefined;
+      var addedKey = undefined;
+
+      theMap.on('add', function(value) {
+        addedElement = value;
+      });
+      theMap.push(item1);
+
+      assert.equal(item1, addedElement);
+    });
+  });
+
 });
 
 
@@ -79,6 +95,108 @@ describe('Map', function () {
     });
   });
 
+  describe('when an entry is added to a map', function () {
+    it('an event is emitted ', function () {
+      var item1 = new TestItem('N1');
+      var theMap = new adt.Map();
+      var eventEmitted = false;
+      var addedElement = undefined;
+
+      theMap.on('add', function(value) {
+        eventEmitted = true;
+      });
+      theMap.put('A', item1);
+
+      assert.equal(true, eventEmitted);
+    });
+  });
+
+  describe('when an entry is added to a map', function () {
+    it('the value is in the parameters of the event ', function () {
+      var item1 = new TestItem('N1');
+      var theMap = new adt.Map();
+      var addedElement = undefined;
+      var addedKey = undefined;
+
+      theMap.on('add', function(value, key) {
+        addedElement = value;
+        addedKey = key;
+      });
+      theMap.put('A', item1);
+
+      assert.equal('A', addedKey);
+      assert.equal(item1, addedElement);
+    });
+  });
+
+  describe('when an entry is removed from a map', function () {
+    it('the value is in the parameters of the event ', function () {
+      var item1 = new TestItem('N1');
+      var theMap = new adt.Map();
+      var removedElement = undefined;
+      var removedKey = undefined;
+
+      theMap.put('A', item1);
+      theMap.on('remove', function(value, key) {
+        removedElement = value;
+        removedKey = key;
+      });
+      theMap.remove('A');
+
+      assert.equal('A', removedKey);
+      assert.equal(item1, removedElement);
+    });
+  });
+
 });
+
+
+
+describe('Tree', function () {
+  var TestNode = function(name, children) {
+    this.name = name;
+    this.getChildren = function() {
+      return children;
+    };
+  };
+
+  describe('when children are created in the tree', function () {
+    it('a sequence of nodes is added', function () {
+      var node3 = new TestNode('N3', []);
+      var node2 = new TestNode('N2', [node3]);
+      var node1 = new TestNode('N1', [node2]);
+      var result = [];
+      var theTree = new adt.Tree(node1);
+      theTree.on('add', function(node) {
+        result.push(node);
+      });
+      theTree.signalSubTreeAdded(node1);
+
+      assert.equal(node1, result[0]);
+      assert.equal(node2, result[1]);
+      assert.equal(node3, result[2]);
+    });
+  });
+
+  describe('when children are removed from tree', function () {
+    it('a sequence of nodes is removed', function () {
+      var node3 = new TestNode('N3', []);
+      var node2 = new TestNode('N2', [node3]);
+      var node1 = new TestNode('N1', [node2]);
+      var result = [];
+      var theTree = new adt.Tree();
+      theTree.on('remove', function(node) {
+        result.push(node);
+      });
+      theTree.signalSubTreeRemoved(node1);
+
+      assert.equal(node3, result[0]);
+      assert.equal(node2, result[1]);
+      assert.equal(node1, result[2]);
+    });
+  });
+
+});
+
 
 

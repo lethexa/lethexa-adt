@@ -1,0 +1,27 @@
+{
+  "name": "lethexa-adt",
+  "version": "0.0.8",
+  "authors": [
+    "Tim Leerhoff <tleerhof@web.de>"
+  ],
+  "description": "Provides abstract data types like sets,lists and trees.",
+  "main": "lethexa-adt.min.js",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/components",
+    "Gruntfile.js",
+    "jenkins-grunt.sh",
+    "publishTag.sh",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
