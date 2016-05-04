@@ -1,6 +1,6 @@
 {
   "name": "lethexa-adt",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Provides abstract data types like sets,lists and trees.",
   "main": "index.js",
   "scripts": {
